@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AMS Beamer series / Bologna FC / Template
+% Andrea Omicini
+% Alma Mater Studiorum - Università di Bologna
+% mailto:andrea.omicini@unibo.it
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
+%
+\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[AMS Bologna FC Beamer Style]
+{AMS Bologna FC Beamer Style}
+%
+\subtitle[AMS Series Templates]
+{AMS Series Templates}
+%
+\author[Andrea Omicini]
+{Andrea Omicini\\\texttt{andrea.omicini@unibo.it}}
+%
+\institute[DISI, Univ.\ Bologna]
+{Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
+%
+\date[v.\ 0.\today]{version 0.\today}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%/////////
+\frame{\titlepage}
+%/////////
+
+%%===============================================================================
+%\section*{Outline}
+%%===============================================================================
+%
+%%/////////
+%\frame[c]{\tableofcontents[hideallsubsections]}
+%%/////////
+
+%===============================================================================
+\section{Premises}
+%===============================================================================
+
+%/////////
+\begin{frame}[c]{Academic Presentations}
+%
+\begin{itemize}
+	\item technical presentations are common in the academic environment
+	\item \alert{\LaTeX{}} is typically used for scientific literature
+	\begin{itemize}
+		\item for better formulas, bibliography, typography, \ldots
+	\end{itemize}
+	\item so, \LaTeX{} is the most typical \emph{toolbox} for scientific presentations
+	\begin{itemize}
+		\item which easily translates into teaching presentations, too
+	\end{itemize}
+\end{itemize}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c]{Beamer}
+%
+\begin{itemize}
+	\item \alert{Beamer} is a \LaTeX{} document class for creating presentation \emph{slides}, with a wide range of \emph{templates} and a set of features for making \emph{slideshow effects}
+	\begin{description}
+		\item[repo] \uurl{https://github.com/josephwright/beamer}
+		\item[CTAN] \uurl{https://ctan.org/pkg/beamer}
+	\end{description}
+	\item even though other styles for \LaTeX{} presentations exist, Beamer is by far the best way today
+\end{itemize}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c]{Aim}
+%
+\begin{itemize}
+	\item many occasions for presentation
+	\item many different people in the group
+	\item a common reference could be useful
+	\item hence, this style
+	\item based on random Beamer styles, and using some references for the colours
+\end{itemize}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c]{AMS}
+%
+\begin{description}
+	\item[AMS] Alma Mater Studiorum--Università di Bologna
+	\item[Cesena] Campus of Cesena
+	\begin{itemize}
+		\item hence the AMS Cesena Campus logo on the bottom-left corner
+	\end{itemize}
+\end{description}
+%
+\end{frame}
+%/////////
+
+%===============================================================================
+\section{Style}
+%===============================================================================
+
+%/////////
+\begin{frame}[c,allowframebreaks]{Colours for AMS Bologna FC}
+%
+\begin{exampleblock}{\texttt{\textcolor{bolognafcblue}{bolognafcblue}}}
+	\begin{description}
+		\item[HEX] \texttt{\#1A2F48}
+		\item[RGB] \texttt{26,47,72}
+	\end{description}
+\end{exampleblock}
+\begin{exampleblock}{\texttt{\textcolor{bolognafcred}{bolognafcred}}}
+	\begin{description}
+		\item[HEX] \texttt{\#A21C26}
+		\item[RGB] \texttt{162,28,38}
+	\end{description}
+\end{exampleblock}
+\framebreak
+\begin{block}{\texttt{\textcolor{bolognafcwhite}{bolognafcwhite}}}
+	\begin{description}
+		\item[HEX] \texttt{\#FFFFFF}
+		\item[RGB] \texttt{255,255,255}
+	\end{description}
+\end{block}
+\begin{alertblock}{\texttt{\textcolor{bolognafcsilver}{bolognafcsilver}}}
+	\begin{description}
+		\item[HEX] \texttt{\#ECECEC}
+		\item[RGB] \texttt{236,236,236}
+	\end{description}
+\end{alertblock}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{Blocks}
+%
+\begin{block}{This is a \texttt{block} environment}
+\begin{verbatim}
+\begin{block}
+...
+\end{block}
+\end{verbatim}
+\end{block}
+%
+\begin{exampleblock}{This is an \texttt{exampleblock} environment}
+\begin{verbatim}
+\begin{exampleblock}
+...
+\end{exampleblock}
+\end{verbatim}
+\end{exampleblock}
+%
+\begin{alertblock}{This is an \texttt{alertblock} environment}
+\begin{verbatim}
+\begin{alertblock}
+...
+\end{alertblock}
+\end{verbatim}
+\end{alertblock}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{Citations}
+%
+\begin{alertblock}{\texttt{\textbackslash{}ccite} command---e.g., \ccite{bibtex-patashnik88}}
+\begin{verbatim}
+\ccite{bibtex-patashnik88}
+\end{verbatim}
+to be used instead of standard \texttt{\textbackslash{}cite} command, prints as \ccite{bibtex-patashnik88}
+\end{alertblock}
+%
+\begin{exampleblock}{\texttt{\textbackslash{}cccite} command---e.g., \cccite{bibtex-patashnik88}}
+\begin{verbatim}
+\cccite{bibtex-patashnik88}
+\end{verbatim}
+to be used to be used instead of standard \texttt{\textbackslash{}cite} command over light backgrounds---as here above in \texttt{examplebox} header
+\end{exampleblock}
+%
+\end{frame}
+%/////////
+
+%===============================================================================
+\section*{}
+%===============================================================================
+
+%/////////
+\frame{\titlepage}
+%/////////
+
+%===============================================================================
+\section*{\refname}
+%===============================================================================
+
+%%%%
+\setbeamertemplate{page number in head/foot}{}
+%/////////
+\begin{frame}[c,noframenumbering]{\refname}
+%\begin{frame}[t,allowframebreaks,noframenumbering]{\refname}
+%	\tiny
+	\scriptsize
+%	\footnotesize
+	\bibliographystyle{apalike}
+%	\bibliographystyle{alpha}
+	\bibliography{AMSBolognaFC-template}
+\end{frame}
+%/////////
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
