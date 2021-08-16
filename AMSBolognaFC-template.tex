@@ -30,7 +30,7 @@
 \institute[DISI, Univ.\ Bologna]
 {Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
 %
-\date[v.\ 0.\today]{version \version.\today}
+\date[v.\ \version.\today]{version \version.\today}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -242,20 +242,30 @@ This template's sources can be used as a simple example of how yo use this Beame
 %/////////
 
 %/////////
-\begin{frame}[c,fragile]{Citations}
+\begin{frame}[c,allowframebreaks,fragile]{Citations}
 %
 \begin{alertblock}{\texttt{\textbackslash{}ccite} command---e.g., \ccite{bibtex-patashnik88}}
 \begin{verbatim}
 \ccite{bibtex-patashnik88}
 \end{verbatim}
-to be used instead of standard \texttt{\textbackslash{}cite} command, prints as \ccite{bibtex-patashnik88}
+\begin{itemize}
+	\item to be used instead of standard \texttt{\textbackslash{}cite} command
+	\item prints as \ccite{bibtex-patashnik88}
+	\item can be used as a note\ccite{bibtex-patashnik88}, with no space before
+\end{itemize}
 \end{alertblock}
 %
 \begin{exampleblock}{\texttt{\textbackslash{}cccite} command---e.g., \cccite{bibtex-patashnik88}}
 \begin{verbatim}
 \cccite{bibtex-patashnik88}
 \end{verbatim}
-to be used to be used instead of standard \texttt{\textbackslash{}cite} command over light backgrounds---as here above in \texttt{examplebox} header
+\begin{itemize}
+	\item to be used to be used instead of standard \texttt{\textbackslash{}cite} command over light backgrounds
+	\begin{itemize}
+		\item as here above in \texttt{examplebox} header
+	\end{itemize}
+	\item can be used as a note with no space before, in the same way as \texttt{\textbackslash{}ccite}
+\end{itemize}
 \end{exampleblock}
 %
 \end{frame}
