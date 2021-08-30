@@ -24,8 +24,8 @@
 \subtitle[AMS Series Templates]
 {AMS Series Templates}
 %
-\author[Andrea Omicini]
-{Andrea Omicini\\\texttt{andrea.omicini@unibo.it}}
+\author[\sspeaker{Omicini} \and Else]
+{\speaker{Andrea Omicini} \and Nobody Else\\\href{mailto:andrea.omicini@unibo.it}{andrea.omicini@unibo.it} \and \href{mailto:nobody.else@unibo.it}{nobody.else@unibo.it}}
 %
 \institute[DISI, Univ.\ Bologna]
 {Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
@@ -241,6 +241,10 @@ This template's sources can be used as a simple example of how yo use this Beame
 \end{frame}
 %/////////
 
+%===============================================================================
+\section{New Commands}
+%===============================================================================
+
 %/////////
 \begin{frame}[c,allowframebreaks,fragile]{Citations}
 %
@@ -301,6 +305,36 @@ This template's sources can be used as a simple example of how yo use this Beame
 \end{itemize}
 \end{block}
 %
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile,allowframebreaks]{Speaker(s) \emph{vs.} Authors}
+%
+\begin{exampleblock}{\texttt{\textbackslash{}speaker} command--e.g., \speaker{Diego Zorro}}
+\begin{itemize}
+	\item to be used within \texttt{\textbackslash{}author} standard \BibTeX{} command to single out the actual speaker among the authors
+	\item[e.g.] as in
+\begin{verbatim}
+	\author[Garcia \and Zorro]
+	{Sarg Garcia \and \speaker{Diego Zorro}}
+\end{verbatim}
+	\item and in the author specification of this template
+\end{itemize}
+\end{exampleblock}
+%
+\begin{block}{\texttt{\textbackslash{}sspeaker} command--e.g., \sspeaker{Diego Zorro}}
+\begin{itemize}
+	\item to be used within \texttt{\textbackslash{}author} standard \BibTeX{} command to single out the actual speaker among the authors in the short form
+	\item[e.g.] as in
+\begin{verbatim}
+	\author[Garcia \and \sspeaker{Zorro}]
+	{Sarg Garcia \and \speaker{Diego Zorro}}
+\end{verbatim}
+	\item and in the author specification of this template
+\end{itemize}
+\end{block}
+
 \end{frame}
 %/////////
 
