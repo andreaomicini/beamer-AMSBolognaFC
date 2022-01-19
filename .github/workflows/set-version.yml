@@ -27,8 +27,7 @@ jobs:
             ASSETS+=("-a" "$A")
             echo "Releasing $A"
           done
-          RELEASE_MESSAGE='${{ github.event.head_commit.message }}'
           RELEASE_TAG='${{ steps.get-version.outputs.version }}'
-          hub release create "${ASSETS[@]}" -m "$RELEASE_MESSAGE" "$RELEASE_TAG"
+          hub release create "${ASSETS[@]}" -m "$RELEASE_TAG" "$RELEASE_TAG"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
