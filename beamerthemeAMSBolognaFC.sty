@@ -1,7 +1,20 @@
-% Copyright 2019 by Andrea Omicini <andrea.omicini@unibo.it>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright 2019-2022 by Andrea Omicini <andrea.omicini@unibo.it>
 %
 % This program can be redistributed and/or modified under the terms
 % of the GNU Public License, version 2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% name
+\newcommand{\stylename}{AMSBolognaFC Beamer style}
+% version
+\newcommand{\stylemajor}{1}
+\newcommand{\styleminor}{0}
+\newcommand{\stylepatch}{20220119}
+\newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
+%%%
+\typeout{}
+\typeout{\stylename-\styleversion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<presentation>
 %
 \setbeamertemplate{navigation symbols}{}
@@ -11,7 +24,7 @@
 %%% TO UNCOMMENT FOR LOCAL DIR
 \usecolortheme{bolognafc}
 %% Alma Logo
-\pgfdeclareimage[height=.97\paperheight]{bg}{img/almacesena-background}
+\pgfdeclareimage[height=.97\paperheight]{bg}{almacesena-background}
 %\pgfdeclareimage[width=\paperwidth]{bg}{img/almacesena-background}
 \setbeamertemplate{background}{\pgfuseimage{bg}}
 % text
@@ -65,6 +78,6 @@
 % speaker
 \newcommand{\speaker}[1]{\textcolor{bolognafcblue!75!red}{#1}}
 \newcommand{\sspeaker}[1]{\textcolor{bolognafcred!20!white}{\it#1}}
-
+%
 \mode
 <all>
