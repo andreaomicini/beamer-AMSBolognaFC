@@ -15,10 +15,20 @@ jobs:
         id: get-version
         run: echo "::set-output name=version::$(cat beamertheme*.sty | python .github/scripts/compute-version.py)"
         
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Zip files to release
+        run: zip style.zip *.sty *.pdf
+
+      - name: Release Assets
+        id: upload-release-assets
+        run: |
+          set -x
+          ASSETS=()
+          for A in *.zip; do
+            ASSETS+=("-a" "$A")
+            echo "Releasing $A"
+          done
+          RELEASE_MESSAGE='${{ github.event.head_commit.message }}'
+          RELEASE_TAG='${{ steps.get-version.outputs.version }}'
+          hub release create "${ASSETS[@]}" -m "$RELEASE_MESSAGE" "$RELEASE_TAG"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.get-version.outputs.version }}
