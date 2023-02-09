@@ -39,13 +39,17 @@
 %                    THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
 %    8-dec-10  (OP)  Still version 0.99a, as the code itself was unchanged;
 %                    this release clarified the license.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modified 2019-2023 by Andrea Omicini <andrea.omicini@unibo.it>
+% for AMSBolognaFC Beamer style
 
 ENTRY
   { address
+    apice   % AMS extension
     author
     booktitle
     chapter
-    doi		% AMS extension
+    doi     % AMS extension
     edition
     editor
     howpublished
@@ -483,18 +487,28 @@ FUNCTION {format.incoll.inproc.crossref}
 
 % AMS style functions -- START 
 
+FUNCTION {format.apice}
+{ 
+  "\apicepar{" * apice * "}  " * ""
+}
+
 FUNCTION {format.url}
 { 
-  "\newblock  \uuurl{" * url * "}" * ""
+  "\uuurl{" * url * "}" * ""
 }
 
 FUNCTION {format.doi}
 { 
-  "\newblock  \dddoi{" * doi * "}" * ""
+  "\dddoi{" * doi * "}" * ""
 }
 
-FUNCTION {format.doiurl}
-{ doi empty$
+FUNCTION {format.ams}
+{ "\newblock" *
+  apice empty$
+    {}
+    { format.apice output }
+  if$
+  doi empty$
   { url empty$
     {}
     { format.url output }
@@ -525,7 +539,7 @@ FUNCTION {article}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -561,7 +575,7 @@ FUNCTION {book}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -614,7 +628,7 @@ FUNCTION {inbook}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -643,7 +657,7 @@ FUNCTION {incollection}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -672,7 +686,7 @@ FUNCTION {inproceedings}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -692,7 +706,7 @@ FUNCTION {manual}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -710,7 +724,7 @@ FUNCTION {mastersthesis}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -726,7 +740,7 @@ FUNCTION {misc}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -762,7 +776,7 @@ FUNCTION {phdthesis}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -782,7 +796,7 @@ FUNCTION {proceedings}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -800,7 +814,7 @@ FUNCTION {techreport}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 
@@ -814,7 +828,7 @@ FUNCTION {unpublished}
   new.block
   note output
   new.block		% AMS style extensions 
-  format.doiurl	% AMS style extensions 
+  format.ams	% AMS style extensions 
   fin.entry
 }
 

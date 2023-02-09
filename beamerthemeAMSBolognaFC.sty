@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2019-2022 by Andrea Omicini <andrea.omicini@unibo.it>
+% Copyright 2019-2023 by Andrea Omicini <andrea.omicini@unibo.it>
 %
 % This program can be redistributed and/or modified under the terms
 % of the GNU Public License, version 2.
@@ -8,8 +8,8 @@
 \newcommand{\stylename}{AMSBolognaFC Beamer style}
 % version
 \newcommand{\stylemajor}{1}
-\newcommand{\styleminor}{3}
-\newcommand{\stylepatch}{20220217}
+\newcommand{\styleminor}{4}
+\newcommand{\stylepatch}{20230210}
 \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 %%%
 \typeout{}
@@ -71,8 +71,10 @@
 \newcommand{\uurl}[1]{{\textcolor{bolognafcred!75!black}{\scriptsize\url{#1}}}}
 \newcommand{\uuurl}[1]{{\textcolor{bolognafcsilver!80!black}{\tiny\url{#1}}}}
 % DOI
-\newcommand{\ddoi}[1]{{\textcolor{bolognafcred!75!black}{\scriptsize DOI:\href{http://dx.doi.org/#1}{#1}}}}
-\newcommand{\dddoi}[1]{{\textcolor{bolognafcsilver!80!black}{\tiny DOI:\href{http://dx.doi.org/#1}{#1}}}}
+\newcommand{\ddoi}[1]{{\textcolor{bolognafcred!75!black}{\scriptsize\href{http://dx.doi.org/#1}{DOI:#1}}}}
+\newcommand{\dddoi}[1]{{\textcolor{bolognafcsilver!80!black}{\tiny\href{http://dx.doi.org/#1}{DOI:#1}}}}
+% APICe
+\newcommand{\apicepar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://apice.unibo.it/xwiki/bin/view/Publications/#1}{\textsf{\it(APICe)}}}}}
 % emph 
 \renewcommand{\emph}[1]{\textcolor{bolognafcblue!50!black}{\textit{#1}}}
 % alert 
