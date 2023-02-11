@@ -8,14 +8,26 @@
 \newcommand{\stylename}{AMSBolognaFC Beamer style}
 % version
 \newcommand{\stylemajor}{1}
-\newcommand{\styleminor}{4}
-\newcommand{\stylepatch}{20230210}
+\newcommand{\styleminor}{5}
+\newcommand{\stylepatch}{20230211}
 \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
-%%%
+% typeout
 \typeout{}
 \typeout{\stylename-\styleversion}
+% options
+\newif\if@doApice
+\@doApicefalse
+\DeclareOption{apice}{\@doApicetrue}
+\ProcessOptions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<presentation>
+%
+% APICe BibTeX field display enabled
+\if@doApice
+\newcommand{\apicepar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://apice.unibo.it/xwiki/bin/view/Publications/#1}{\textsf{\it(APICe)}}}}}
+\else
+\newcommand{\apicepar}[1]{}
+\fi
 %
 \setbeamertemplate{navigation symbols}{}
 %
@@ -73,8 +85,6 @@
 % DOI
 \newcommand{\ddoi}[1]{{\textcolor{bolognafcred!75!black}{\scriptsize\href{http://dx.doi.org/#1}{DOI:#1}}}}
 \newcommand{\dddoi}[1]{{\textcolor{bolognafcsilver!80!black}{\tiny\href{http://dx.doi.org/#1}{DOI:#1}}}}
-% APICe
-\newcommand{\apicepar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://apice.unibo.it/xwiki/bin/view/Publications/#1}{\textsf{\it(APICe)}}}}}
 % emph 
 \renewcommand{\emph}[1]{\textcolor{bolognafcblue!50!black}{\textit{#1}}}
 % alert 
