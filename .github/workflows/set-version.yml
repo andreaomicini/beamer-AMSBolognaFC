@@ -3,31 +3,33 @@ on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
+
 jobs:
-  compile:
+  release:
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
-          
-      - name: Get Version
+        uses: actions/checkout@v4
+
+      - name: Compute version
         id: get-version
-        run: echo "::set-output name=version::$(cat beamertheme*.sty | python .github/scripts/compute-version.py)"
-        
+        run: |
+          BASE="$(python3 .github/scripts/compute-version.py beamerthemeAMSBolognaFC.sty)"
+          STAMP="$(date -u +'%Y-%m-%dT%H%M%S')"
+          echo "version=${BASE}" >> "$GITHUB_OUTPUT"
+          echo "tag=${BASE}-${STAMP}" >> "$GITHUB_OUTPUT"
+
       - name: Zip files to release
         run: zip style.zip *.sty *.pdf
 
-      - name: Release Assets
-        id: upload-release-assets
-        run: |
-          set -x
-          ASSETS=()
-          for A in *.zip; do
-            ASSETS+=("-a" "$A")
-            echo "Releasing $A"
-          done
-          RELEASE_TAG='${{ steps.get-version.outputs.version }}'
-          hub release create "${ASSETS[@]}" -m "$RELEASE_TAG" "$RELEASE_TAG"
+      - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.get-version.outputs.tag }}" style.zip \
+            --title "${{ steps.get-version.outputs.tag }}" \
+            --notes "AMSBolognaFC Beamer style ${{ steps.get-version.outputs.version }}, released from ${GITHUB_SHA}."

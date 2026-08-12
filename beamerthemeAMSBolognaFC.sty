@@ -6,11 +6,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % name
 \newcommand{\stylename}{AMSBolognaFC Beamer style}
-% version
+% version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\stylemajor}{1}
-\newcommand{\styleminor}{5}
-\newcommand{\stylepatch}{20230211}
-\newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
+\newcommand{\styleminor}{6}
+% \stylepatch is optional: comment the next line out to release as Major.Minor
+\newcommand{\stylepatch}{0}
+\ifdefined\stylepatch
+  \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
+\else
+  \newcommand{\styleversion}{\stylemajor.\styleminor}
+\fi
 % typeout
 \typeout{}
 \typeout{\stylename-\styleversion}
