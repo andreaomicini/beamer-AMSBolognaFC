@@ -17,7 +17,7 @@
 \newcommand{\stylemajor}{1}
 \newcommand{\styleminor}{7}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\stylepatch}{0}
+\newcommand{\stylepatch}{1}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -118,11 +118,16 @@
 %   \translate -- beamer's translator hook.  \refname is \translate{References},
 %               so \section*{\refname} warns "Token not allowed in a PDF
 %               string".  \@firstofone keeps the argument, drops the command.
+%   \\ -- a line break inside \title or \author, meaningless in a PDF string.
+%               hyperref would drop it and run the two sides together, turning
+%               "Nobody Else\\someone@unibo.it" into "Nobody Elsesomeone@unibo.it";
+%               mapping it to a space keeps the metadata readable.
 \ifdefined\pdfstringdefDisableCommands
   \pdfstringdefDisableCommands{%
     \let\speaker\@firstofone
     \let\sspeaker\@firstofone
     \let\translate\@firstofone
+    \let\\\space
   }
 \fi
 %
