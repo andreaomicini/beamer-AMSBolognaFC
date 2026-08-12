@@ -15,9 +15,9 @@
 \newcommand{\stylename}{AMSBolognaFC Beamer style}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\stylemajor}{1}
-\newcommand{\styleminor}{6}
+\newcommand{\styleminor}{7}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\stylepatch}{2}
+\newcommand{\stylepatch}{0}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -107,6 +107,36 @@
 \newcommand{\sspeaker}[1]{\textcolor{bolognafcred!20!white}{\it#1}}
 %
 \usepackage[T1]{fontenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% workarounds -- handled here so that no document has to deal with them
+%
+% Commands that cannot survive hyperref's PDF-string expansion.  Without this,
+% every deck would have to wrap them in \texorpdfstring by hand.
+%   \speaker, \sspeaker -- colour the speaker's name on the title page.
+%               \@firstofone keeps the name and drops only the colouring, so the
+%               author still reaches the PDF /Author field.
+%   \translate -- beamer's translator hook.  \refname is \translate{References},
+%               so \section*{\refname} warns "Token not allowed in a PDF
+%               string".  \@firstofone keeps the argument, drops the command.
+\ifdefined\pdfstringdefDisableCommands
+  \pdfstringdefDisableCommands{%
+    \let\speaker\@firstofone
+    \let\sspeaker\@firstofone
+    \let\translate\@firstofone
+  }
+\fi
+%
+% Computer Modern Sans has no small-caps shape, so every \textsc under the
+% default font -- \textsc{Alma Mater Studiorum} on a title page, say -- falls
+% back to the SERIF small caps and warns "Font shape `T1/cmss/m/sc' in size <n>
+% not available".  Declaring the substitution makes it official and silent at
+% every size.  ssub* is a silent substitution and the typeset result is the one
+% LaTeX was already producing, so nothing moves on the slides.
+%
+% To get genuine SANS small caps instead, load a font family that has them
+% (Lato, Fira Sans, Linux Biolinum ...) -- but that restyles the whole deck and
+% departs from the AMSBolognaFC identity, so it is deliberately not done here.
+\DeclareFontShape{T1}{cmss}{m}{sc}{<->ssub*cmr/m/sc}{}
 %
 \mode
 <all>
