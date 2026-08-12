@@ -24,7 +24,7 @@ jobs:
           echo "tag=${BASE}-${STAMP}" >> "$GITHUB_OUTPUT"
 
       - name: Zip files to release
-        run: zip style.zip *.sty *.pdf
+        run: zip style.zip *.sty *.bst *.pdf LICENSE
 
       - name: Create release
         env:
