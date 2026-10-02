@@ -17,7 +17,7 @@
 \newcommand{\stylemajor}{1}
 \newcommand{\styleminor}{7}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\stylepatch}{7}
+\newcommand{\stylepatch}{8}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -45,11 +45,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<presentation>
 %
-% APICe BibTeX field display enabled
+% APICe BibTeX field display enabled. The marker carries its own trailing gap,
+% outside the link so the hotspot stops at the word: the .bst appends two spaces
+% after \apicepubpar, but BibTeX wraps the .bbl line there and the newline
+% collapses them into one \tiny space, which the URL runs into
 \if@doApice
-\newcommand{\apicepar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://apice.unibo.it/bin/view/Publication/#1}{\textsf{\it(APICe)}}}}}
+\newcommand{\apicepubpar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://pubs.apice.unibo.it/#1}{\textsf{\it(APICe)}}\mbox{~~~}}}}
 \else
-\newcommand{\apicepar}[1]{}
+\newcommand{\apicepubpar}[1]{}
 \fi
 %
 \setbeamertemplate{navigation symbols}{}
@@ -156,6 +159,8 @@
 %               rather than left out: the stringing above is unexpandable, so
 %               hyperref drops it and leaves the rest of the body behind, putting
 %               the DOI ahead of its own label.
+%   \apicepubpar -- a decorative marker, meaningless in a PDF string, so it is
+%               dropped, argument and all.
 \newcommand{\ams@nodoi}[1]{DOI:#1}
 \ifdefined\pdfstringdefDisableCommands
   \pdfstringdefDisableCommands{%
@@ -165,6 +170,7 @@
     \let\uuurl\@firstofone
     \let\ddoi\ams@nodoi
     \let\dddoi\ams@nodoi
+    \let\apicepubpar\@gobble
     \let\translate\@firstofone
     \let\\\space
   }

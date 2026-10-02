@@ -42,7 +42,7 @@ Beyond the beamer furniture, the theme defines:
 | `\ccite` `\cccite` | superscript citations, in two weights |
 | `\uurl` `\uuurl` | URLs, in two sizes; since 1.7.5 no character in the address needs escaping |
 | `\ddoi` `\dddoi` | DOIs, linked, in two sizes; since 1.7.5 no character in the DOI needs escaping |
-| `\apicepar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
+| `\apicepubpar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
 | `\aalert` | a quieter alternative to `\alert` |
 
 Since 1.7.5 the four address commands **string their argument before using

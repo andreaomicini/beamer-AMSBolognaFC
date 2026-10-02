@@ -490,7 +490,7 @@ FUNCTION {format.incoll.inproc.crossref}
 
 FUNCTION {format.apice}
 { 
-  "\apicepar{" * apice * "}  " * ""
+  "\apicepubpar{" * apice * "}  " * ""
 }
 
 FUNCTION {format.url}
