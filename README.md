@@ -93,12 +93,13 @@ tokenised when the frame is read, before anything in it runs, so a catcode trick
 would make every frame citing a DOI `fragile`.
 
 The theme also declares a small-caps substitution for the sans font and
-neutralises `\speaker`, `\sspeaker`, `\ccite`, `\cccite`, `\uurl`, `\uuurl`, `\ddoi`, `\dddoi`,
-`\translate` and `\\` inside hyperref's PDF strings, so decks build without the
-font-shape and PDF-string warnings that otherwise appear. A citation says
-nothing in a bookmark, so `\ccite` and `\cccite` go entirely, note and all; their
-replacement is expandable, since an unexpandable one would have hyperref drop the
-name alone and leave `[p.~42]{key}` behind as literal text. The four address
+neutralises `\speaker`, `\sspeaker`, `\ccite`, `\cccite`, `\uurl`, `\uuurl`,
+`\ddoi`, `\dddoi`, `\translate` and `\\` inside hyperref's PDF strings, so decks
+build without the font-shape and PDF-string warnings that otherwise appear. A
+citation says nothing in a bookmark, so `\ccite` and `\cccite` go entirely, note
+and all; their replacement is expandable, since an unexpandable one would have
+hyperref drop the name alone and leave `[p.~42]{key}` behind as literal text.
+The four address
 commands are neutralised there because a PDF string is expanded before the
 stringing above can run: a URL keeps its address, a DOI becomes `DOI:<doi>`, and
 a bare `_` is still dropped with *Token not allowed in a PDF string* — as it is
