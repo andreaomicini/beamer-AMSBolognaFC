@@ -1,7 +1,7 @@
 # beamer-AMSBolognaFC
 
-> A simple Beamer-LaTeX style for presentations by Alma Mater Studiorum (Cesena Campus)
-> with Bologna FC standard colours
+> A simple Beamer-LaTeX style for presentations by Alma Mater Studiorum —
+> Università di Bologna, in the colours of Bologna FC
 
 ## author
 
