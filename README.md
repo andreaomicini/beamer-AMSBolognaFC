@@ -57,27 +57,33 @@ stay Bologna FC's and Computer Modern's:
 
 ## structure
 
+<!-- markdownlint-disable MD013 -->
 | file | what it is |
-|---|---|
+| --- | --- |
 | `beamerthemeAMSBolognaFC.sty` | the theme: the `apice` and `bologna`/`cesena` options, the beamer templates and colour assignments, the commands below, and the workarounds a deck would otherwise have to carry itself |
 | `beamercolorthemebolognafc.sty` | the palette alone — `bolognafcblue`, `bolognafcred`, `bolognafcsilver`, `bolognafcwhite` — loaded by the theme |
 | `almabologna-background.pdf` | the background under the `bologna` option: the Ateneo seal in grey, as a watermark cropped at the lower-right corner |
 | `almacesena-background.pdf` | the same, with the Campus di Cesena seal, for the `cesena` option |
 | `apalike-AMS.bst` | the bibliography style, a renamed derivative of `apalike.bst`, with titles emboldened (see [the references frame](#the-references-frame) and the licence note below) |
 
+<!-- markdownlint-enable MD013 -->
+
 Every release attaches a `style.zip` holding all five plus the `LICENSE`, so
 the archive is enough to typeset with on its own.
 
 Beyond the beamer furniture, the theme defines:
 
+<!-- markdownlint-disable MD013 -->
 | command | for |
-|---|---|
+| --- | --- |
 | `\speaker` `\sspeaker` | marking the actual speaker among the authors, in the long and short forms, both in bold. Safe in `\author`: the name still reaches the PDF `/Author` field, only the markup is dropped |
 | `\ccite` `\cccite` | superscript citations, in two weights; both take `\cite`'s optional note, as in `\ccite[p.~42]{key}` |
 | `\uurl` `\uuurl` | URLs, in two sizes; since 1.7.5 no character in the address needs escaping |
 | `\ddoi` `\dddoi` | DOIs, linked, in two sizes; since 1.7.5 no character in the DOI needs escaping |
 | `\apicepubpar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
 | `\aalert` | a quieter alternative to `\alert` |
+
+<!-- markdownlint-enable MD013 -->
 
 Since 1.7.5 the four address commands **string their argument before using
 it**, so `\ddoi{10.1007/978-3-032-22940-3_12}` and
