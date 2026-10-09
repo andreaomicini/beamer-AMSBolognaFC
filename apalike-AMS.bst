@@ -9,6 +9,10 @@
 % Differences between this style and `alpha' are generally heralded by a `%'.
 % The file btxbst.doc has the documentation for alpha.bst.
 %
+% AMSBolognaFC: renamed and modified. Titles are emboldened, so that an entry's
+% title outweighs its citation key -- see `embolden' below, and README.md in
+% https://github.com/andreaomicini/beamer-AMSBolognaFC for why.
+%
 % This style should be used with the `apalike' LaTeX style (apalike.sty).
 % \cite's come out like "(Jones, 1986)" in the text but there are no labels
 % in the bibliography, and something like "(1986)" comes out immediately
@@ -89,7 +93,10 @@ FUNCTION {output.nonnull}
   output.state mid.sentence =
     { ", " * write$ }
     { output.state after.block =
-        { add.period$ write$
+        % AMSBolognaFC: no period where a block ends, since the next one starts on a
+        % new line anyway -- the stop only ever trailed a title or a URL. The
+        % add.period$ further down stays: that one separates items on one line
+        { write$
           newline$
           "\newblock " write$
         }
@@ -204,6 +211,14 @@ FUNCTION {field.or.null}
   if$
 }
 
+% AMSBolognaFC: emphasize's counterpart, for titles only
+FUNCTION {embolden}
+{ duplicate$ empty$
+    { pop$ "" }
+    { "{\bfseries " swap$ * "}" * }
+  if$
+}
+
 FUNCTION {emphasize}
 { duplicate$ empty$
     { pop$ "" }
@@ -271,7 +286,7 @@ FUNCTION {format.editors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ }
+    { title "t" change.case$ embolden }   % AMSBolognaFC
   if$
 }
 
@@ -301,7 +316,7 @@ FUNCTION {n.dashify}
 }
 
 FUNCTION {format.btitle}
-{ title emphasize
+{ title emphasize embolden   % AMSBolognaFC
 }
 
 FUNCTION {tie.or.space.connect}

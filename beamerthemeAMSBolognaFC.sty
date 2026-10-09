@@ -15,9 +15,9 @@
 \newcommand{\stylename}{AMSBolognaFC Beamer style}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\stylemajor}{1}
-\newcommand{\styleminor}{7}
+\newcommand{\styleminor}{8}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\stylepatch}{8}
+%\newcommand{\stylepatch}{0}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -41,6 +41,15 @@
 \newif\if@doApice
 \@doApicefalse
 \DeclareOption{apice}{\@doApicetrue}
+% which seal watermarks the slides -- none unless asked for: bologna (the Ateneo)
+% or cesena (the Campus). The seals belong to the Alma Mater, so a deck claims
+% one explicitly; whoever is outside the Alma Mater just leaves the option out
+\newif\if@doSeal
+\@doSealfalse
+\newif\if@doCesena
+\@doCesenafalse
+\DeclareOption{bologna}{\@doSealtrue\@doCesenafalse}
+\DeclareOption{cesena}{\@doSealtrue\@doCesenatrue}
 \ProcessOptions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<presentation>
@@ -48,9 +57,9 @@
 % APICe BibTeX field display enabled. The marker carries its own trailing gap,
 % outside the link so the hotspot stops at the word: the .bst appends two spaces
 % after \apicepubpar, but BibTeX wraps the .bbl line there and the newline
-% collapses them into one \tiny space, which the URL runs into
+% collapses them into one \tiny space, which the DOI runs into
 \if@doApice
-\newcommand{\apicepubpar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://pubs.apice.unibo.it/#1}{\textsf{\it(APICe)}}\mbox{~~~}}}}
+\newcommand{\apicepubpar}[1]{{\textcolor{bolognafcsilver!90!black}{\tiny\href{https://pubs.apice.unibo.it/#1}{\textsf{APICe}}\mbox{~~~}}}}
 \else
 \newcommand{\apicepubpar}[1]{}
 \fi
@@ -61,10 +70,18 @@
 \useinnertheme[shadow=true]{rounded}
 %%% TO UNCOMMENT FOR LOCAL DIR
 \usecolortheme{bolognafc}
-%% Alma Logo
-\pgfdeclareimage[height=.97\paperheight]{bg}{almacesena-background}
-%\pgfdeclareimage[width=\paperwidth]{bg}{img/almacesena-background}
-\setbeamertemplate{background}{\pgfuseimage{bg}}
+% background -- plain by default; with bologna or cesena, a seal in grey cropped
+% at the lower-right corner: the Ateneo with the former, the Campus di Cesena
+% with the latter
+\setbeamercolor{background canvas}{bg=bolognafcwhite}
+\if@doSeal
+  \if@doCesena
+    \pgfdeclareimage[height=.97\paperheight]{bg}{almacesena-background}
+  \else
+    \pgfdeclareimage[height=.97\paperheight]{bg}{almabologna-background}
+  \fi
+  \setbeamertemplate{background}{\pgfuseimage{bg}}
+\fi
 % text
 \setbeamercolor{normal text}{fg=bolognafcblue!10!black}
 \setbeamercolor{alerted text}{fg=bolognafcred!90!black}
@@ -93,6 +110,9 @@
 \setbeamercolor{footnote}{fg=bolognafcblue!25!gray}
 % biblio
 \setbeamertemplate{bibliography item}{\insertbiblabel}
+% the label is a pointer, not a bullet: without this it inherits item's red and
+% collides with the title, which is red on purpose
+\setbeamercolor{bibliography item}{fg=bolognafcblue!60!gray}
 \setbeamercolor{bibliography entry author}{fg=bolognafcblue!90!black}
 \setbeamercolor{bibliography entry title}{fg=bolognafcred!75!black} 
 \setbeamercolor{bibliography entry location}{fg=bolognafcblue!75!gray} 
@@ -102,9 +122,15 @@
 \setbeamerfont*{abstract title}{family=\sffamily}
 \setbeamercolor*{abstract}{fg=purple!50!black}
 \setbeamerfont*{abstract}{family=\rmfamily,size=\small}
-% Citation
-\newcommand{\ccite}[1]{{\textcolor{bolognafcsilver!80!black}{\textsuperscript{\tiny\cite{#1}}}}}
-\newcommand{\cccite}[1]{{\textcolor{bolognafcsilver}{\textsuperscript{\tiny\cite{#1}}}}}
+% Citation -- both light, for the dark surfaces a marker sits on.
+% #1 colour, #2 optional note (-NoValue- when absent), #3 keys.  \cite[]{...}
+% is not \cite{...} -- it typesets an empty note -- so the test is on the
+% marker, not on emptiness.  The marker survives being passed down here.
+\newcommand{\ams@cite}[3]{%
+  \textcolor{#1}{\textsuperscript{\tiny\IfNoValueTF{#2}{\cite{#3}}{\cite[#2]{#3}}}}%
+}
+\NewDocumentCommand{\ccite}{o m}{\ams@cite{bolognafcsilver!80!black}{#1}{#2}}
+\NewDocumentCommand{\cccite}{o m}{\ams@cite{bolognafcsilver}{#1}{#2}}
 % the address of a URL or a DOI is stringed before it is used, so that a special
 % character in it needs no escaping: \_ and a bare _ alike give one underscore.
 % #1 receives #2 as a string with every backslash dropped -- see README.md
@@ -122,19 +148,23 @@
   \textcolor{bolognafcred!75!black}{\scriptsize\expandafter\url\expandafter{\ams@link@arg}}}}
 \newcommand{\uuurl}[1]{{\ams@link@string\ams@link@arg{#1}%
   \textcolor{bolognafcsilver!80!black}{\tiny\expandafter\url\expandafter{\ams@link@arg}}}}
-% DOI
+% DOI -- https://doi.org is the current resolver; dx.doi.org is a deprecated
+% alias, and the .bst reaches these through \dddoi, so this is the only place
+% the resolver is named
 \newcommand{\ddoi}[1]{{\ams@link@string\ams@link@arg{#1}%
-  \textcolor{bolognafcred!75!black}{\scriptsize\href{http://dx.doi.org/\ams@link@arg}{DOI:\ams@link@arg}}}}
+  \textcolor{bolognafcred!75!black}{\scriptsize\href{https://doi.org/\ams@link@arg}{DOI:\ams@link@arg}}}}
 \newcommand{\dddoi}[1]{{\ams@link@string\ams@link@arg{#1}%
-  \textcolor{bolognafcsilver!80!black}{\tiny\href{http://dx.doi.org/\ams@link@arg}{DOI:\ams@link@arg}}}}
+  \textcolor{bolognafcsilver!80!black}{\tiny\href{https://doi.org/\ams@link@arg}{DOI:\ams@link@arg}}}}
 % emph 
 \renewcommand{\emph}[1]{\textcolor{bolognafcblue!50!black}{\textit{#1}}}
 % alert 
 %\renewcommand{\alert}[1]{\textcolor{bolognafcblue!90!black}{#1}}
 \newcommand{\aalert}[1]{\textcolor{bolognafcsilver!90!black}{\it#1}}
-% speaker
-\newcommand{\speaker}[1]{\textcolor{bolognafcblue!75!red}{#1}}
-\newcommand{\sspeaker}[1]{\textcolor{bolognafcred!20!white}{\it#1}}
+% speaker -- both bold: the point is to stand out, and colour alone could not do
+% it.  \speaker keeps its own colour for the title page; \sspeaker inherits its
+% surface's colour, so it reads light on the footline and dark on a light surface
+\newcommand{\speaker}[1]{\textcolor{bolognafcblue!75!red}{\textbf{#1}}}
+\newcommand{\sspeaker}[1]{\textbf{#1}}
 %
 \usepackage[T1]{fontenc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,9 +172,13 @@
 %
 % Commands that cannot survive hyperref's PDF-string expansion.  Without this,
 % every deck would have to wrap them in \texorpdfstring by hand.
-%   \speaker, \sspeaker -- colour the speaker's name on the title page.
-%               \@firstofone keeps the name and drops only the colouring, so the
+%   \speaker, \sspeaker -- mark the speaker's name on the title page.
+%               \@firstofone keeps the name and drops only the markup, so the
 %               author still reaches the PDF /Author field.
+%   \ccite, \cccite -- a citation says nothing in a bookmark, so they go
+%               entirely, note and all.  The replacement is expandable: an
+%               unexpandable one (\NewDocumentCommand) would have hyperref drop
+%               the name alone and leave "[note]{keys}" behind.
 %   \translate -- beamer's translator hook.  \refname is \translate{References},
 %               so \section*{\refname} warns "Token not allowed in a PDF
 %               string".  \@firstofone keeps the argument, drops the command.
@@ -161,11 +195,14 @@
 %               the DOI ahead of its own label.
 %   \apicepubpar -- a decorative marker, meaningless in a PDF string, so it is
 %               dropped, argument and all.
+\NewExpandableDocumentCommand{\ams@nocite}{o m}{}
 \newcommand{\ams@nodoi}[1]{DOI:#1}
 \ifdefined\pdfstringdefDisableCommands
   \pdfstringdefDisableCommands{%
     \let\speaker\@firstofone
     \let\sspeaker\@firstofone
+    \let\ccite\ams@nocite
+    \let\cccite\ams@nocite
     \let\uurl\@firstofone
     \let\uuurl\@firstofone
     \let\ddoi\ams@nodoi
