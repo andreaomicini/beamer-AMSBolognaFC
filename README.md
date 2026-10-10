@@ -83,9 +83,16 @@ Beyond the beamer furniture, the theme defines:
 | `\uurl` `\uuurl` | URLs, in two sizes; since 1.7.5 no character in the address needs escaping |
 | `\ddoi` `\dddoi` | DOIs, linked, in two sizes; since 1.7.5 no character in the DOI needs escaping |
 | `\apicepubpar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
+| `\apice` `\aapice` | an APICe object — publication, talk, course, event — by its kind and its page name, printed as its short address and linked; since 1.9 |
+| `\apicesite` `\aapicesite` | an APICe alias host, such as `andreaomicini.apice.unibo.it`; since 1.9 |
+| `\apicepage` `\aapicepage` | any other APICe page, by its space and page path; since 1.9 |
 | `\aalert` | a quieter alternative to `\alert` |
 
 <!-- markdownlint-enable MD013 -->
+
+The three APICe commands are AMSUniBo's, from its 1.7 — see
+[its README](https://github.com/andreaomicini/beamer-AMSUniBo#apice-addresses)
+for the kinds, the aliases and the optional text.
 
 Since 1.7.5 the four address commands **string their argument before using
 it**, so `\ddoi{10.1007/978-3-032-22940-3_12}` and
