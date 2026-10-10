@@ -1,5 +1,7 @@
 # beamer-AMSBolognaFC
 
+![AMSBolognaFC Beamer style logo](logo/amsbolognafc-style-full.svg)
+
 > A simple Beamer-LaTeX style for presentations by Alma Mater Studiorum —
 > Università di Bologna, in the colours of Bologna FC
 
