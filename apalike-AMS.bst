@@ -146,8 +146,9 @@ FUNCTION {output.bibitem}
 }
 
 FUNCTION {fin.entry}
-{ add.period$
-  write$
+% AMS extension / do not add period
+% { add.period$
+{ write$
   newline$
 }
 
