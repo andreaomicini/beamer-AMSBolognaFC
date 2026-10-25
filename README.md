@@ -57,6 +57,13 @@ stay Bologna FC's and Computer Modern's:
 * the APICe marker reads `APICe`, without parentheses or italic;
 * the bibliography ranks an entry: the key is a quiet pointer, the title bold.
 
+Since 1.10 `apalike-AMS.bst` is AMSUniBo 1.7.3's, and with it come a `talk`
+entry type for APICe's Talks, APICe's theses, and a `subtitle` printed after the
+title past a colon; the theme gains the talk and thesis markers `\apicetalkpar`
+and `\apicethesispar`. The
+[AMSUniBo README](https://github.com/andreaomicini/beamer-AMSUniBo#subtitles)
+describes all three.
+
 ## structure
 
 <!-- markdownlint-disable MD013 -->
