@@ -1,1 +1,1 @@
-AMS Bologna FC Beamer style
+Beamer style with the colours of BolognaFC for presentations by AMS people
