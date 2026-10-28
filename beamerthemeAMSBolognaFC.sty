@@ -17,7 +17,7 @@
 \newcommand{\stylemajor}{1}
 \newcommand{\styleminor}{10}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-%\newcommand{\stylepatch}{0}
+\newcommand{\stylepatch}{1}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -201,8 +201,12 @@
 \NewDocumentCommand{\aapicepage}{o m}{{\ams@link@string\ams@link@arg{#2}%
   \edef\ams@apice@addr{apice.unibo.it/bin/view/\ams@link@arg}%
   \ams@apice@link{bolognafcsilver!80!black}{\tiny}{#1}}}
-% emph 
-\renewcommand{\emph}[1]{\textcolor{bolognafcblue!50!black}{\textit{#1}}}
+% emph -- in a block title, the title's own colour: italic only
+\def\ams@emph@colour{bolognafcblue!50!black}
+\renewcommand{\emph}[1]{\textcolor{\ams@emph@colour}{\textit{#1}}}
+\addtobeamertemplate{block begin}{\def\ams@emph@colour{.}}{\def\ams@emph@colour{bolognafcblue!50!black}}
+\addtobeamertemplate{block alerted begin}{\def\ams@emph@colour{.}}{\def\ams@emph@colour{bolognafcblue!50!black}}
+\addtobeamertemplate{block example begin}{\def\ams@emph@colour{.}}{\def\ams@emph@colour{bolognafcblue!50!black}}
 % alert 
 %\renewcommand{\alert}[1]{\textcolor{bolognafcblue!90!black}{#1}}
 \newcommand{\aalert}[1]{\textcolor{bolognafcsilver!90!black}{\it#1}}

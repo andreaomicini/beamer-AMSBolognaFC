@@ -64,6 +64,9 @@ and `\apicethesispar`. The
 [AMSUniBo README](https://github.com/andreaomicini/beamer-AMSUniBo#subtitles)
 describes all three.
 
+Since 1.10.1, as in AMSUniBo 1.7.4, `\emph` in a block title takes the
+title's own colour, italic only, instead of vanishing into the title bar.
+
 ## structure
 
 <!-- markdownlint-disable MD013 -->
