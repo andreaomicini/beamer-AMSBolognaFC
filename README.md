@@ -64,8 +64,13 @@ and `\apicethesispar`. The
 [AMSUniBo README](https://github.com/andreaomicini/beamer-AMSUniBo#subtitles)
 describes all three.
 
-Since 1.10.1, as in AMSUniBo 1.7.4, `\emph` in a block title takes the
-title's own colour, italic only, instead of vanishing into the title bar.
+Since 1.11, as in AMSUniBo 1.8.1, the paired commands take their colour from
+the surface they land on: the headers of `block` and `alertblock` are dark, all
+else light. Two letters is the style command, three letters the same command,
+smaller and quieter; `\cccite` is `\ccite`; `\alert` and `\emph` read in a
+header; `\aalert` is the quiet alert. A deck never picks a command for its
+background — see
+[AMSUniBo's README](https://github.com/andreaomicini/beamer-AMSUniBo#structure).
 
 ## structure
 
@@ -89,14 +94,14 @@ Beyond the beamer furniture, the theme defines:
 | command | for |
 | --- | --- |
 | `\speaker` `\sspeaker` | marking the actual speaker among the authors, in the long and short forms, both in bold. Safe in `\author`: the name still reaches the PDF `/Author` field, only the markup is dropped |
-| `\ccite` `\cccite` | superscript citations, in two weights; both take `\cite`'s optional note, as in `\ccite[p.~42]{key}` |
+| `\ccite` | superscript citations; takes `\cite`'s optional note, as in `\ccite[p.~42]{key}`. `\cccite` is the same, kept for existing decks |
 | `\uurl` `\uuurl` | URLs, in two sizes; since 1.7.5 no character in the address needs escaping |
 | `\ddoi` `\dddoi` | DOIs, linked, in two sizes; since 1.7.5 no character in the DOI needs escaping |
 | `\apicepubpar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
 | `\apice` `\aapice` | an APICe object — publication, talk, course, event — by its kind and its page name, printed as its short address and linked; since 1.9 |
 | `\apicesite` `\aapicesite` | an APICe alias host, such as `andreaomicini.apice.unibo.it`; since 1.9 |
 | `\apicepage` `\aapicepage` | any other APICe page, by its space and page path; since 1.9 |
-| `\aalert` | a quieter alternative to `\alert` |
+| `\aalert` | a quiet alert, italic |
 
 <!-- markdownlint-enable MD013 -->
 
