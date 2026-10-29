@@ -64,6 +64,10 @@ and `\apicethesispar`. The
 [AMSUniBo README](https://github.com/andreaomicini/beamer-AMSUniBo#subtitles)
 describes all three.
 
+Since 1.11.1, as in AMSUniBo 1.8.2, `apalike-AMS.bst` has an `issue` entry
+type, for a whole journal issue cited by its editors—see
+[AMSUniBo's README](https://github.com/andreaomicini/beamer-AMSUniBo#journal-issues).
+
 Since 1.11, as in AMSUniBo 1.8.1, the paired commands take their colour from
 the surface they land on: the headers of `block` and `alertblock` are dark, all
 else light. Two letters is the style command, three letters the same command,
