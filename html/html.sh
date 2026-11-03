@@ -1,4 +1,6 @@
 #!/bin/bash
+# retired 2026-11-01: pages are made by beamer-AMSUniBo/html/html.sh (latex -> dvisvgm); the code below is kept for the record
+echo "html.sh: retired; from the deck root run  bash ../beamer-AMSUniBo/html/html.sh [<deck>] [--compare]" >&2; exit 1
 # html.sh [--nudge] [<deck>] -- the deck's HTML page, rebuilt from its PDF and measured against it
 # run from the deck's root; <deck> may be omitted when tex/ holds a single .tex
 set -euo pipefail
