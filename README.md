@@ -72,6 +72,11 @@ Since 1.11.2, as in AMSUniBo 1.8.3, it prints `articleno`, an article number,
 where there are no pages—see
 [AMSUniBo's README](https://github.com/andreaomicini/beamer-AMSUniBo#article-numbers).
 
+Since 1.11.4, as in AMSUniBo 1.8.5, `apalike-AMS.bst` is one file, the same in all
+six AMS styles, and has a `webpage` entry type for web pages, printed through the
+theme's new `\wwwurl`—see
+[AMSUniBo's README](https://github.com/andreaomicini/beamer-AMSUniBo#web-pages).
+
 Since 1.11, as in AMSUniBo 1.8.1, the paired commands take their colour from
 the surface they land on: the headers of `block` and `alertblock` are dark, all
 else light. Two letters is the style command, three letters the same command,
@@ -104,6 +109,7 @@ Beyond the beamer furniture, the theme defines:
 | `\speaker` `\sspeaker` | marking the actual speaker among the authors, in the long and short forms, both in bold. Safe in `\author`: the name still reaches the PDF `/Author` field, only the markup is dropped |
 | `\ccite` | superscript citations; takes `\cite`'s optional note, as in `\ccite[p.~42]{key}`. `\cccite` is the same, kept for existing decks |
 | `\uurl` `\uuurl` | URLs, in two sizes; since 1.7.5 no character in the address needs escaping |
+| `\wwwurl` | a web page's URL, as `@webpage` prints it: the colour of a journal's name, at the size around it; since 1.11.4 |
 | `\ddoi` `\dddoi` | DOIs, linked, in two sizes; since 1.7.5 no character in the DOI needs escaping |
 | `\apicepubpar` | the APICe marker; defined either way, but expands to nothing unless the `apice` option is given |
 | `\apice` `\aapice` | an APICe object — publication, talk, course, event — by its kind and its page name, printed as its short address and linked; since 1.9 |
@@ -131,7 +137,7 @@ tokenised when the frame is read, before anything in it runs, so a catcode trick
 would make every frame citing a DOI `fragile`.
 
 The theme also declares a small-caps substitution for the sans font and
-neutralises `\speaker`, `\sspeaker`, `\ccite`, `\cccite`, `\uurl`, `\uuurl`,
+neutralises `\speaker`, `\sspeaker`, `\ccite`, `\cccite`, `\uurl`, `\uuurl`, `\wwwurl`,
 `\ddoi`, `\dddoi`, `\translate` and `\\` inside hyperref's PDF strings, so decks
 build without the font-shape and PDF-string warnings that otherwise appear. A
 citation says nothing in a bookmark, so `\ccite` and `\cccite` go entirely, note

@@ -17,7 +17,7 @@
 \newcommand{\stylemajor}{1}
 \newcommand{\styleminor}{11}
 % \stylepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\stylepatch}{3}
+\newcommand{\stylepatch}{4}
 \ifdefined\stylepatch
   \newcommand{\styleversion}{\stylemajor.\styleminor.\stylepatch}
 \else
@@ -159,6 +159,9 @@
 % URL
 \newcommand{\uurl}[1]{{\ams@link@string\ams@link@arg{#1}%
   \textcolor{\ams@onsurface{bolognafcred!75!black}{bolognafcsilver}}{\scriptsize\expandafter\url\expandafter{\ams@link@arg}}}}
+% a web page's URL: the colour of a journal's name, at the size around it
+\newcommand{\wwwurl}[1]{{\ams@link@string\ams@link@arg{#1}%
+  \usebeamercolor[fg]{bibliography entry location}\expandafter\url\expandafter{\ams@link@arg}}}
 \newcommand{\uuurl}[1]{{\ams@link@string\ams@link@arg{#1}%
   \textcolor{\ams@onsurface{\ams@quiet}{bolognafcsilver}}{\tiny\expandafter\url\expandafter{\ams@link@arg}}}}
 % DOI -- https://doi.org is the current resolver; dx.doi.org is a deprecated
@@ -269,6 +272,7 @@
     \let\cccite\ams@nocite
     \let\uurl\@firstofone
     \let\uuurl\@firstofone
+    \let\wwwurl\@firstofone
     \let\ddoi\ams@nodoi
     \let\dddoi\ams@nodoi
     \let\apicepubpar\@gobble
